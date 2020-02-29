@@ -8,18 +8,17 @@
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
     <script>
         $(function () {
-            $.getJSON("test.json", function (data) {
-                var count = 0;
-                $(data.室町幕府将軍).each(function () {
-                    $.getJSON("https://script.google.com/macros/s/AKfycbxJ7fHqMvEJ5KH8I9pS7atVgxULonPYE6RUzjcopkSk6CmFq29F/exec", function (data) {
-                        var count = 0;
-                        $(data).each(function () {
-                            $("#data_list").append("<tr id=\"data_id" + count + "\">" + count + "</tr>");
-                            $("#data_list #data_id" + count).append("<td>" + this.name + "</td>");
-                            count++;
-                        })
-                    })
-                });
+            $.getJSON("data.json", function (data) {
+                var
+                    ulObj = $("#data_list"),
+                    len = data.length;
+
+                for (var i = 0; i < len; i++) {
+                    ulObj.append("<tr id=\"data_id" + count + "\">" + i + 1 + "</tr>");
+                    ulObj.append("<td>" + data[i].name + "</td>");
+                }
+            });
+        });
     </script>
     <title>タイトル</title>
 </head>
