@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMGO Entry List</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script>
+        $(function () {
+            $.getJSON("test.json", function (data) {
+                var count = 0;
+                $(data.室町幕府将軍).each(function () {
+                    $.getJSON("https://script.googleusercontent.com/macros/echo?user_content_key=XEjQ7TANXKC3ZrCIhmArTgMUyZTbxoNEnTODToJOBMnkOhFp0WQP59e-legu0_xwOOXWKuNDZeCeHSzaiThCFggPC0asIR0sm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnOJuNfe-kMYN3y0GCvZ61aPPGvP_6-JpHCvfJIsT2Jjhrp8fKbAZVz9T2-67P0F0QrtTwMqJIVfx&lib=MQl9janqUONwRjDYbdma67mUp9Fw9cSfX", function (data) {
+                        var count = 0;
+                        $(data).each(function () {
+                            $("#data_list").append("<tr id=\"data_id" + count + "\">" + count + "</tr>");
+                            $("#data_list #data_id" + count).append("<td>" + this.name + "</td>");
+                            count++;
+                        })
+                    })
+                });
+    </script>
+    <title>タイトル</title>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>名前</th>
+                <th>生年 ～ 死没</th>
+            </tr>
+        </thead>
+        <tbody id="data_list">
+        </tbody>
+    </table>
+</body>
+
+</html>
